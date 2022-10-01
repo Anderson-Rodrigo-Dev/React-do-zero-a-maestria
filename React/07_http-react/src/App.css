@@ -53,3 +53,7 @@ form input{
   flex-direction: column;
   margin-bottom: 15px;
 }
+
+ul li button {
+  margin-left: 8px;
+}

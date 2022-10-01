@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // 4 - custom hook
 
@@ -9,10 +9,8 @@ import { useFetch } from "./hooks/useFetch";
 const url = "http://localhost:3000/products";
 
 function App() {
-  const [products, setProducts] = useState([]);
-
   // 4 - custom hook
-  const {data: itens, httpConfig} = useFetch(url)
+  const { data: itens, httpConfig, loading, error} = useFetch(url);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -39,7 +37,7 @@ function App() {
       price,
     };
 
-  /*   const res = await fetch(url, {
+    /*   const res = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,22 +52,35 @@ function App() {
 
     // 5 - refatorando post
 
-    httpConfig(product, "POST")
+    httpConfig(product, "POST");
 
     setName("");
     setPrice("");
   };
 
+  //9 - desafio 6
+
+  const handleRemove = (id) => {
+    httpConfig(id, "DELETE")
+  }
+
   return (
     <div className="App">
       <h1>Lista de Produtos</h1>
-      <ul>
-        {itens && itens.map((product) => (
-          <li key={product.id}>
-            {product.name} - R${product.price}
-          </li>
-        ))}
-      </ul>
+      {/* 6 - loading */}
+      {loading && <p>Carregando Dados!</p>}
+      {error && <p>{error}</p>}
+      {!error && (
+        <ul>
+          {itens &&
+            itens.map((product) => (
+              <li key={product.id}>
+                {product.name} - R${product.price}
+                <button onClick={() => handleRemove(product.id) }>Excluir</button>
+              </li>
+            ))}
+        </ul>
+      )}
 
       <div className="add-product">
         <form onSubmit={handleSubmit}>
@@ -91,7 +102,9 @@ function App() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </label>
-          <input type="submit" value="Criar" />
+          {/* 7 - state de loading no post */}
+          {loading && <input type="submit" value="aguarde" disabled/>}
+          {!loading && <input type="submit" value="Criar" />}
         </form>
       </div>
     </div>
