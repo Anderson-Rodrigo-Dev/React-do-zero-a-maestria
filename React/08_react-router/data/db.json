@@ -1,0 +1,19 @@
+{
+  "products": [
+    {
+      "name": "Tênis",
+      "price": "99.90",
+      "id": 1
+    },
+    {
+      "name": "Calça",
+      "price": "49.90",
+      "id": 2
+    },
+    {
+      "name": "Camisa",
+      "price": "59.90",
+      "id": 3
+    }
+  ]
+}
