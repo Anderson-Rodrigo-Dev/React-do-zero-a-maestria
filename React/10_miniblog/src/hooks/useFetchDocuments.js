@@ -31,7 +31,8 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
         //busca
         //dashboard
 
-        q = await query(collectionRef, orderBy("createdAT", "desc"));
+        q = await query(collectionRef, orderBy("createdAt", "desc"));
+        
 
         await onSnapshot(q, (QuerySnapshot) => {
           setDocuments(
