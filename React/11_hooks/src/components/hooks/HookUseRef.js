@@ -6,18 +6,41 @@ const HookUseRef = () => {
   const [counter, setCounter] = useState(0);
   const [counterB, setCounterB] = useState(0);
 
-  useEffect(()=> {
-    numberRef.current ++
-  })
+  useEffect(() => {
+    numberRef.current++;
+  });
+
+  // 2 - useRef e DOM
+  const inputRef = useRef();
+  const [text, setText] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setText("");
+
+    inputRef.current.focus();
+  };
 
   return (
     <div>
+      {/* 1 - useREf */}
       <h2>useRef</h2>
       <p>o componente renderizou: {numberRef.current} vezes</p>
       <p>Counter 1: {counter}</p>
       <button onClick={() => setCounter(counter + 1)}>Contador A</button>
       <p>Counter 2: {counterB}</p>
       <button onClick={() => setCounterB(counterB + 1)}>Contador B</button>
+      {/* 2 - useRef e DOM */}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          ref={inputRef}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <input type="submit" value="Enviar" />
+      </form>
       <hr />
     </div>
   );
