@@ -2,7 +2,7 @@ import React from "react";
 
 // useContext
 import { useContext } from "react";
-import { SomeContext } from "../../components/hooks/HookUseContext";
+import { SomeContext } from "../../components/HookUseContext";
 
 const About = () => {
   const { contextValue } = useContext(SomeContext);

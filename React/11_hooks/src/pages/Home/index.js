@@ -1,15 +1,16 @@
 //useContext
 import { useContext } from "react";
-import { SomeContext } from "../../components/hooks/HookUseContext";
+import { SomeContext } from "../../components/HookUseContext";
 
-import HookUseEffect from "../../components/hooks/HookUseEffect";
-import HookUseReducer from "../../components/hooks/HookUseReducer";
-import HookUseState from "../../components/hooks/HookUseState";
-import HookUseRef from "../../components/hooks/HookUseRef";
-import HookUseCallBack from "../../components/hooks/HookUseCallBack";
-import HookUseMemo from "../../components/hooks/HookUseMemo";
-import HookUseLayoutEffect from "../../components/hooks/HookUseLayoutEffect";
-import HookUseImperativeHandle from "../../components/hooks/HookUseImperativeHandle";
+import HookUseEffect from "../../components/HookUseEffect";
+import HookUseReducer from "../../components/HookUseReducer";
+import HookUseState from "../../components/HookUseState";
+import HookUseRef from "../../components/HookUseRef";
+import HookUseCallBack from "../../components/HookUseCallBack";
+import HookUseMemo from "../../components/HookUseMemo";
+import HookUseLayoutEffect from "../../components/HookUseLayoutEffect";
+import HookUseImperativeHandle from "../../components/HookUseImperativeHandle";
+import HookCustom from "../../components/HookCustom";
 
 const Home = () => {
   const { contextValue } = useContext(SomeContext);
@@ -26,6 +27,7 @@ const Home = () => {
       <HookUseMemo />
       <HookUseLayoutEffect />
       <HookUseImperativeHandle />
+      <HookCustom />
     </div>
   );
 };
